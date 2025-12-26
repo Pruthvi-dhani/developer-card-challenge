@@ -2,23 +2,51 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
+const skills = [
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA"
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D"
+  },
+  {
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF"
+  },
+  {
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33"
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB"
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00"
+  }
+];
+
+const skillEmojiMap = new Map();
+skillEmojiMap.set("beginner", "👶");
+skillEmojiMap.set("intermediate", "👍");
+skillEmojiMap.set("advanced", "💪");
+
 function App() {
   return (
     <div className="card">
       <Avatar />
       <div className="data">
         <Intro />
-        {/* Should contain one Skill component
-        for each web dev skill that you have,
-        customized with props */}
-        <div className="skill-list">
-          <SkillList description="HTML + CSS 💪" color="violet"/>
-          <SkillList description="Javascript 👌" color="yellow"/>
-          <SkillList description="Web design 🙈" color="green"/>
-          <SkillList description="Git and Github 😊" color="red"/>
-          <SkillList description="React 😎" color="blue"/>
-          <SkillList description="Svelte 😄" color="#F72C02"/>
-        </div>
+        <SkillList />
       </div>
     </div>
   );
@@ -43,8 +71,16 @@ function Intro() {
 
 function SkillList(props) {
   return (
+    <div className="skill-list">
+      {skills.map(item => <Skill color={item.color} description={item.skill} skill={item.level}/>)}
+    </div>
+  )
+}
+
+function Skill({color, description, skill}) {
+    return (
     <div>
-      <span className="skill"  style={{ backgroundColor: props.color }}>{props.description}</span>
+      <span className="skill"  style={{ backgroundColor: color }}>{description} {skillEmojiMap.get(skill)}</span>
     </div>
   )
 }
