@@ -34,7 +34,7 @@ function Avatar() {
 
 function Intro() {
   return (
-    <div className="data">
+    <div>
       <h1> Peter Griffin </h1>
       <p> Hi there, heh-heh, it's Peter Griffin, here from Quahog, Rhode Island, probably supposed to say somethin' smart but, uh… yeah, that ship sailed right past the Drunken Clam. I got my wife Lois, my weird kids, and a talking dog who thinks he's better than me, but joke's on him, I'm the one with the theme song. Freakin' sweet.</p>
     </div>
